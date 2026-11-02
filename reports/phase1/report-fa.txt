@@ -1,0 +1,208 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{geometry}
+\usepackage{xepersian}
+\settextfont{XB Niloofar}
+\geometry{a4paper, margin=1in}
+
+\begin{document}
+
+\begin{center}
+    \Large \textbf{درس آمار و کاربردهای آن} \\
+    \vspace{0.3cm}
+    \normalsize استاد: دکتر کسری علیشاهی \\
+    پاییز ۱۴۰۵ \\
+    \vspace{0.5cm}
+    \Large \textbf{گزارش فاز اول: بررسی ارتباط مصرف قند و سیگار با پوسیدگی دندان} \\
+    \vspace{0.3cm}
+    \normalsize محمدحسین امینی (۴۰۳۱۰۰۶۵) \\
+\end{center}
+
+\vspace{0.5cm}
+
+\begin{abstract}
+\noindent این مطالعه به بررسی ارتباط بین مصرف کل قند، وضعیت سیگار کشیدن و پوسیدگی دندان در بزرگسالان آمریکایی با استفاده از داده‌های پیمایش ملی سلامت و تغذیه (NHANES) ۲۰۲۱-۲۰۲۳ می‌پردازد. پس از ادغام مجموعه داده‌های دموگرافیک، رژیم غذایی، سلامت دهان و سیگار، نمونه‌ی تحلیلی نهایی شامل ۴,۷۸۸ بزرگسال ۱۸ سال و بالاتر به دست آمد. تحلیل‌های توصیفی نشان داد که ۳۷.۱۸ درصد از شرکت‌کنندگان پوسیدگی دندان داشتند و ۴۱.۳۳ درصد سابقه‌ی سیگار کشیدن داشتند. میانگین مصرف روزانه قند ۹۵.۴۷ گرم (انحراف معیار = ۶۸.۱۳) بود. توزیع مصرف قند دارای چولگی به راست بود (چولگی = ۲.۳۱) و مردان به طور قابل توجهی بیشتر از زنان قند مصرف می‌کردند. این یافته‌های اولیه نشان‌دهنده‌ی ارتباطات بالقوه‌ای است که در فازهای بعدی به طور رسمی آزمون خواهند شد.
+\end{abstract}
+
+\section{مقدمه}
+پوسیدگی دندان یک نگرانی عمده‌ی بهداشت عمومی است که تحت تأثیر عوامل مختلف سبک زندگی و رژیم غذایی قرار دارد. هدف اصلی این پروژه پاسخ به این سؤال است: \textbf{آیا مصرف قند و سیگار با پوسیدگی دندان در بزرگسالان آمریکایی ارتباط دارند، حتی با کنترل سن و جنسیت؟} این گزارش یافته‌های اکتشافی و توصیفی اولیه‌ی این تحقیق را ارائه می‌کند.
+
+\section{روش‌ها}
+\subsection{منبع داده و طراحی مطالعه}
+داده‌های این مطالعه از پیمایش ملی سلامت و تغذیه (NHANES)، برنامه‌ای که توسط مراکز کنترل و پیشگیری از بیماری‌ها (CDC) اجرا می‌شود، استخراج شده است. این یک \textbf{مطالعه مشاهده‌ای} است؛ بنابراین نمی‌توان روابط علت و معلولی را اثبات کرد.
+
+\subsection{پردازش داده و جمعیت تحلیلی}
+چهار مجموعه داده با استفاده از شناسه‌ی یکتای \texttt{SEQN} ادغام شدند: دموگرافیک (\texttt{DEMO\_L})، رژیم غذایی (\texttt{DR1TOT\_L})، سلامت دهان (\texttt{OHQ\_L}) و سیگار (\texttt{SMQ\_L}). پس از فیلتر افراد بالای ۱۸ سال و مدیریت داده‌های گمشده، نمونه‌ی نهایی شامل \textbf{۴,۷۸۸} نفر بود.
+
+\subsection{ممیزی داده‌های گمشده}
+قبل از پاکسازی، درصد داده‌های گمشده به شرح زیر بود: مصرف قند (۲۲.۸۲٪)، پوسیدگی دندان (۱۵.۷۸٪) و سیگار (۱۲.۰۰٪). تمام ردیف‌های دارای داده‌ی گمشده در متغیرهای اصلی از تحلیل حذف شدند.
+
+\subsection{متغیرها}
+متغیرهای اصلی مورد نظر عبارتند از:
+\begin{itemize}
+    \item \textbf{متغیر پاسخ:} پوسیدگی دندان (دودویی: بله/خیر)، مشتق شده از \texttt{OHQ660}.
+    \item \textbf{متغیرهای توضیحی اصلی:} مصرف کل قند (\texttt{DR1TSUGR}) و وضعیت سیگار (\texttt{SMQ020}).
+    \item \textbf{متغیرهای مخدوش‌گر:} سن (\texttt{RIDAGEYR}) و جنسیت (\texttt{RIAGENDR}).
+    \item \textbf{وزن نمونه‌گیری:} \texttt{WTMEC2YR} برای تحلیل‌های وزن‌دار استفاده شد.
+\end{itemize}
+
+\section{نتایج}
+\subsection{آماره‌های توصیفی}
+جمعیت تحلیلی شامل ۴,۷۸۸ شرکت‌کننده، شامل ۲,۱۱۰ زن (۵۵.۹۳٪) و ۲,۶۷۸ مرد (۴۴.۰۷٪) بود. جدول \ref{tab:descriptive_fa} آماره‌های خلاصه برای مصرف قند و سن را نشان می‌دهد.
+
+\begin{table}[H]
+    \centering
+    \caption{آماره‌های توصیفی}
+    \label{tab:descriptive_fa}
+    \begin{tabular}{lcccccc}
+    \toprule
+    \textbf{متغیر} & \textbf{میانگین} & \textbf{میانه} & \textbf{انحراف معیار} & \textbf{واریانس} & \textbf{IQR} \\
+    \midrule
+    قند (گرم) & ۹۵.۴۷ & ۸۱.۱۲ & ۶۸.۱۳ & ۴۶۴۱.۳۸ & ۷۲.۵۹ \\
+    سن (سال) & ۵۵.۰۵ & ۵۹.۰۰ & ۱۶.۸۴ & ۲۸۳.۵۳ & ۲۷.۰۰ \\
+    \bottomrule
+    \end{tabular}
+\end{table}
+
+\subsection{فراوانی پوسیدگی دندان و سیگار}
+\begin{itemize}
+    \item \textbf{پوسیدگی دندان:} ۱,۷۸۰ شرکت‌کننده (۳۷.۱۸٪) پوسیدگی دندان داشتند، در حالی که ۳,۰۰۸ نفر (۶۲.۸۲٪) نداشتند.
+    \item \textbf{سیگار:} ۱,۹۷۹ شرکت‌کننده (۴۱.۳۳٪) سابقه‌ی سیگار کشیدن (حداقل ۱۰۰ نخ) داشتند، در حالی که ۲,۸۰۹ نفر (۵۸.۶۷٪) نداشتند.
+\end{itemize}
+
+\subsection{مقایسه توصیفی بر اساس جنسیت}
+جدول \ref{tab:gender_fa} مقایسه‌ی مصرف قند بین مردان و زنان را نشان می‌دهد. مردان به طور قابل توجهی بیشتر از زنان قند مصرف می‌کردند (۱۰۷.۷۹ گرم در مقابل ۸۵.۷۵ گرم).
+
+\begin{table}[H]
+    \centering
+    \caption{مصرف قند بر اساس جنسیت}
+    \label{tab:gender_fa}
+    \begin{tabular}{lccc}
+    \toprule
+    \textbf{جنسیت} & \textbf{میانگین (گرم)} & \textbf{میانه (گرم)} & \textbf{انحراف معیار} \\
+    \midrule
+    مرد & ۱۰۷.۷۹ & ۹۱.۹۹ & ۷۸.۴۴ \\
+    زن & ۸۵.۷۵ & ۷۴.۹۸ & ۵۶.۹۰ \\
+    \bottomrule
+    \end{tabular}
+\end{table}
+
+\subsection{تحلیل وزن‌دار}
+میانگین خام مصرف قند ۹۵.۴۷ گرم بود، در حالی که میانگین وزن‌دار ۹۵.۵۸ گرم بود. درصد وزن‌دار سیگاری‌ها حدود ۳۴.۶۵٪ از جمعیت و درصد وزن‌دار پوسیدگی دندان ۳۴.۶۵٪ بود.
+
+\subsection{مصورسازی}
+نمودارهای ۱ تا ۱۵، ۱۵ نمودار با کیفیت بالا را که برای این تحلیل تولید شده‌اند، نشان می‌دهند.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{../../figures/hist_sugar.png}
+    \caption{توزیع مصرف کل قند با خطوط میانگین و میانه}
+    \label{fig:hist_sugar_fa}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{../../figures/box_sugar_tooth.png}
+    \caption{مصرف قند بر اساس وضعیت پوسیدگی دندان}
+    \label{fig:box_tooth_fa}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{../../figures/box_sugar_smoking.png}
+    \caption{مصرف قند بر اساس وضعیت سیگار}
+    \label{fig:box_smoking_fa}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{../../figures/scatter_sugar_age.png}
+    \caption{مصرف قند در برابر سن}
+    \label{fig:scatter_age_fa}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{../../figures/bar_tooth_gender.png}
+    \caption{فراوانی پوسیدگی دندان بر اساس جنسیت}
+    \label{fig:bar_gender_fa}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{../../figures/bar_sugar_agegroup.png}
+    \caption{میانگین مصرف قند بر اساس گروه سنی}
+    \label{fig:bar_agegroup_fa}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{../../figures/line_sugar_agegroup.png}
+    \caption{روند میانگین مصرف قند در گروه‌های سنی}
+    \label{fig:line_agegroup_fa}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{../../figures/interaction_sugar_tooth_gender.png}
+    \caption{تعامل پوسیدگی دندان و جنسیت بر مصرف قند}
+    \label{fig:interaction_fa}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{../../figures/box_sugar_smoking_tooth.png}
+    \caption{مصرف قند بر اساس سیگار و پوسیدگی دندان}
+    \label{fig:box_smoking_tooth_fa}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{../../figures/kde_sugar_gender.png}
+    \caption{چگالی مصرف قند بر اساس جنسیت}
+    \label{fig:kde_gender_fa}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{../../figures/pie_tooth_smoking.png}
+    \caption{درصد پوسیدگی دندان بر اساس وضعیت سیگار}
+    \label{fig:pie_fa}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{../../figures/correlation_heatmap.png}
+    \caption{نقشه‌ی حرارتی همبستگی (توصیفی)}
+    \label{fig:corr_fa}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{../../figures/qq_sugar.png}
+    \caption{نمودار QQ برای مصرف کل قند}
+    \label{fig:qq_fa}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{../../figures/box_age_tooth.png}
+    \caption{توزیع سن بر اساس وضعیت پوسیدگی دندان}
+    \label{fig:box_age_fa}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{../../figures/bar_tooth_decay.png}
+    \caption{فراوانی پوسیدگی دندان}
+    \label{fig:bar_decay_fa}
+\end{figure}
+
+\section{بحث و نتیجه‌گیری}
+آماده‌سازی داده‌ها و تحلیل توصیفی تأیید کرد که مجموعه داده‌های ادغام‌شده NHANES برای بررسی سؤال تحقیقاتی اصلی مناسب است. شواهد بصری و عددی اولیه حاکی از یک ارتباط بالقوه بین مصرف قند، سیگار و پوسیدگی دندان است که تفاوت‌های جنسیتی قابل توجهی در مصرف قند وجود دارد. در فازهای بعدی، استنباط آماری رسمی (آزمون فرض و مدل‌سازی رگرسیون) برای آزمون دقیق این ارتباط با کنترل متغیرهای مخدوش‌گر انجام خواهد شد.
+
+\end{document}

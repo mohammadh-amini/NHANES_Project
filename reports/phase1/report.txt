@@ -1,0 +1,206 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{geometry}
+\geometry{a4paper, margin=1in}
+
+\begin{document}
+
+\begin{center}
+    \Large \textbf{Statistics and Its Applications} \\
+    \vspace{0.3cm}
+    \normalsize Instructor: Dr. Kasra Alishahi \\
+    Fall 2025 \\
+    \vspace{0.5cm}
+    \Large \textbf{Phase 1 Report: Association Between Sugar Intake, Smoking, and Tooth Decay} \\
+    \vspace{0.3cm}
+    \normalsize Mohammad Hossein Amini (403100065) \\
+\end{center}
+
+\vspace{0.5cm}
+
+\begin{abstract}
+\noindent This study investigates the association between total sugar intake, smoking status, and tooth decay in US adults using data from the National Health and Nutrition Examination Survey (NHANES) 2021-2023. After merging demographic, dietary, oral health, and smoking datasets, a final analytical sample of 4,788 adults aged 18 and older was obtained. Descriptive analyses revealed that 37.18\% of participants reported having tooth decay, and 41.33\% had a history of smoking. The mean daily sugar intake was 95.47 grams (SD = 68.13). Notably, the distribution of sugar intake was highly right-skewed (skewness = 2.31), and males consumed significantly more sugar than females. These initial findings suggest potential associations that will be formally tested in subsequent phases.
+\end{abstract}
+
+\section{Introduction}
+Tooth decay is a major public health concern, influenced by various lifestyle and dietary factors. The primary objective of this project is to answer the following research question: \textbf{Is sugar intake and smoking associated with tooth decay in US adults, even after controlling for age and gender?} This report presents the initial exploratory and descriptive findings of this investigation.
+
+\section{Methods}
+\subsection{Data Source and Study Design}
+The data for this study were extracted from the National Health and Nutrition Examination Survey (NHANES), a program conducted by the Centers for Disease Control and Prevention (CDC). This is an \textbf{observational study}; therefore, causal relationships cannot be established.
+
+\subsection{Data Processing and Analytical Population}
+Four datasets were merged using the unique identifier \texttt{SEQN}: Demographic (\texttt{DEMO\_L}), Dietary (\texttt{DR1TOT\_L}), Oral Health (\texttt{OHQ\_L}), and Smoking (\texttt{SMQ\_L}). After filtering for adults aged 18 and older and handling missing data, the final sample included \textbf{4,788} participants.
+
+\subsection{Missing Data Audit}
+Before cleaning, the missing data rates were as follows: Sugar Intake (22.82\%), Tooth Decay (15.78\%), and Smoking (12.00\%). All rows with missing values in the primary variables were excluded from the analysis.
+
+\subsection{Variables}
+The primary variables of interest are:
+\begin{itemize}
+    \item \textbf{Response Variable:} Tooth Decay (binary: Yes/No), derived from \texttt{OHQ660}.
+    \item \textbf{Main Explanatory Variables:} Total Sugar Intake (\texttt{DR1TSUGR}) and Smoking Status (\texttt{SMQ020}).
+    \item \textbf{Covariates:} Age (\texttt{RIDAGEYR}) and Gender (\texttt{RIAGENDR}).
+    \item \textbf{Survey Weight:} \texttt{WTMEC2YR} was used for weighted analyses.
+\end{itemize}
+
+\section{Results}
+\subsection{Descriptive Statistics}
+The analytical population consisted of 4,788 participants, including 2,110 females (55.93\%) and 2,678 males (44.07\%). Table \ref{tab:descriptive} presents the summary statistics for sugar intake and age.
+
+\begin{table}[H]
+    \centering
+    \caption{Descriptive Statistics}
+    \label{tab:descriptive}
+    \begin{tabular}{lcccccc}
+    \toprule
+    \textbf{Variable} & \textbf{Mean} & \textbf{Median} & \textbf{SD} & \textbf{Variance} & \textbf{IQR} \\
+    \midrule
+    Sugar (grams) & 95.47 & 81.12 & 68.13 & 4641.38 & 72.59 \\
+    Age (years) & 55.05 & 59.00 & 16.84 & 283.53 & 27.00 \\
+    \bottomrule
+    \end{tabular}
+\end{table}
+
+\subsection{Frequency of Tooth Decay and Smoking}
+\begin{itemize}
+    \item \textbf{Tooth Decay:} 1,780 participants (37.18\%) reported having tooth decay, while 3,008 (62.82\%) did not.
+    \item \textbf{Smoking:} 1,979 participants (41.33\%) had a history of smoking (at least 100 cigarettes), while 2,809 (58.67\%) did not.
+\end{itemize}
+
+\subsection{Descriptive Comparison by Gender}
+Table \ref{tab:gender} shows the comparison of sugar intake between males and females. Males consumed significantly more sugar than females (107.79 g vs. 85.75 g).
+
+\begin{table}[H]
+    \centering
+    \caption{Sugar Intake by Gender}
+    \label{tab:gender}
+    \begin{tabular}{lccc}
+    \toprule
+    \textbf{Gender} & \textbf{Mean (g)} & \textbf{Median (g)} & \textbf{SD} \\
+    \midrule
+    Male & 107.79 & 91.99 & 78.44 \\
+    Female & 85.75 & 74.98 & 56.90 \\
+    \bottomrule
+    \end{tabular}
+\end{table}
+
+\subsection{Weighted Analysis}
+The raw mean of sugar intake was 95.47 grams, while the weighted mean was 95.58 grams. The weighted proportion of smokers was approximately 34.65\% of the population, and the weighted proportion of tooth decay was 34.65\%.
+
+\subsection{Visualizations}
+Figures \ref{fig:hist_sugar} to \ref{fig:box_age} display 15 high-quality visualizations generated for this analysis.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{../../figures/hist_sugar.png}
+    \caption{Distribution of Total Sugar Intake with Mean and Median Lines}
+    \label{fig:hist_sugar}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{../../figures/box_sugar_tooth.png}
+    \caption{Sugar Intake by Tooth Decay Status}
+    \label{fig:box_tooth}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{../../figures/box_sugar_smoking.png}
+    \caption{Sugar Intake by Smoking Status}
+    \label{fig:box_smoking}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{../../figures/scatter_sugar_age.png}
+    \caption{Sugar Intake vs Age}
+    \label{fig:scatter_age}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{../../figures/bar_tooth_gender.png}
+    \caption{Tooth Decay Frequency by Gender}
+    \label{fig:bar_gender}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{../../figures/bar_sugar_agegroup.png}
+    \caption{Mean Sugar Intake by Age Group}
+    \label{fig:bar_agegroup}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{../../figures/line_sugar_agegroup.png}
+    \caption{Trend of Mean Sugar Intake Across Age Groups}
+    \label{fig:line_agegroup}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{../../figures/interaction_sugar_tooth_gender.png}
+    \caption{Interaction of Tooth Decay and Gender on Sugar Intake}
+    \label{fig:interaction}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{../../figures/box_sugar_smoking_tooth.png}
+    \caption{Sugar Intake by Smoking and Tooth Decay}
+    \label{fig:box_smoking_tooth}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{../../figures/kde_sugar_gender.png}
+    \caption{Density of Sugar Intake by Gender}
+    \label{fig:kde_gender}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{../../figures/pie_tooth_smoking.png}
+    \caption{Tooth Decay Percentage by Smoking Status}
+    \label{fig:pie}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{../../figures/correlation_heatmap.png}
+    \caption{Correlation Heatmap (Descriptive)}
+    \label{fig:corr}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{../../figures/qq_sugar.png}
+    \caption{QQ-Plot of Total Sugar Intake}
+    \label{fig:qq}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{../../figures/box_age_tooth.png}
+    \caption{Age Distribution by Tooth Decay Status}
+    \label{fig:box_age}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{../../figures/bar_tooth_decay.png}
+    \caption{Frequency of Tooth Decay}
+    \label{fig:bar_decay}
+\end{figure}
+
+\section{Discussion and Conclusion}
+The data preparation and descriptive analysis confirmed that the merged NHANES dataset is suitable for investigating the primary research question. Initial visual and numerical evidence suggests a potential association between sugar intake, smoking, and tooth decay, with notable gender differences in sugar consumption. In the subsequent phases, formal statistical inference (hypothesis testing and regression modeling) will be conducted to rigorously test this association while controlling for covariates.
+
+\end{document}
