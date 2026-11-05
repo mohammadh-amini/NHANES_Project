@@ -181,3 +181,41 @@ print(f"Weighted P(Decay) = {weighted_p_decay:.4f}")
 print("-> Weighted probability is a better estimate for the US population.")
 
 print("\n✅ All Phase 2 probability tasks completed.")
+
+# ==========================================
+# 10. Empirical vs Theoretical Binomial Distribution
+# ==========================================
+print("\n=== 10. Empirical vs Theoretical Binomial ===")
+# Generate 500 random samples of size 10 from our dataset
+sample_size = 10
+num_simulations = 500
+empirical_smokers = []
+
+for _ in range(num_simulations):
+    # Sample 10 people randomly
+    sample = df['Event_A_Smoker'].sample(n=sample_size, replace=True)
+    # Count smokers
+    empirical_smokers.append(sample.sum())
+
+# Calculate empirical probabilities for each count (0 to 10)
+empirical_counts = pd.Series(empirical_smokers).value_counts(normalize=True).sort_index()
+# Fill missing counts with 0
+for i in range(11):
+    if i not in empirical_counts:
+        empirical_counts[i] = 0
+empirical_counts = empirical_counts.sort_index()
+
+# Plot comparison
+plt.figure(figsize=(10, 6))
+plt.bar(x_values - 0.2, binomial_probs, width=0.4, label='Theoretical (Binomial)', color='skyblue')
+plt.bar(x_values + 0.2, empirical_counts.values, width=0.4, label='Empirical (Simulated)', color='salmon')
+plt.title('Theoretical vs Empirical Binomial Distribution (n=10)')
+plt.xlabel('Number of Smokers in Sample')
+plt.ylabel('Probability')
+plt.xticks(x_values)
+plt.legend()
+plt.show()
+
+print("Note: The binomial model assumes a constant probability of success (p) for each trial.")
+print("However, in our data, the probability of smoking varies by gender, age, and other factors.")
+print("Therefore, the empirical distribution might not perfectly match the theoretical one.")
